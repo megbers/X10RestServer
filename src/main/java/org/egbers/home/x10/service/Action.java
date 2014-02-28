@@ -1,29 +1,29 @@
-package org.egbers.home.x10.examples;
+package org.egbers.home.x10.service;
 
 public class Action {
-	protected int socket;
-	protected char house;
+	protected String socket;
+	protected String house;
 	protected boolean apply_to_all_sockets;
 	protected int value;
 
-	public Action(char house, int value) {
+	public Action(String house, int value) {
 		this.house = house;
 		this.apply_to_all_sockets = true;
 		this.value = value;
 	}
 
-	public Action(char house, int socket, int value) {
+	public Action(String house, String socket, int value) {
 		this.house = house;
 		this.socket = socket;
 		this.apply_to_all_sockets = false;
 		this.value = value;
 	}
 
-	public int getSocket() {
+	public String getSocket() {
 		return socket;
 	}
 
-	public char getHouse() {
+	public String getHouse() {
 		return house;
 	}
 

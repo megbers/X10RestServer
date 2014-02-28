@@ -24,9 +24,18 @@ public class LightControllerResource {
 	@GET
 	@Path("on/{house}/{unit}")
 	@Produces(APPLICATION_JSON)
-	public JSONObject turnOff(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) throws JSONException {
+	public JSONObject turnOn(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) throws JSONException {
 		boolean success = lightService.turnOn(houseCode, unitCode);
-		
+		JSONObject response = new JSONObject();
+		response.put("success", success);
+		return response;
+	}
+	
+	@GET
+	@Path("off/{house}/{unit}")
+	@Produces(APPLICATION_JSON)
+	public JSONObject turnOff(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) throws JSONException {
+		boolean success = lightService.turnOff(houseCode, unitCode);
 		JSONObject response = new JSONObject();
 		response.put("success", success);
 		return response;

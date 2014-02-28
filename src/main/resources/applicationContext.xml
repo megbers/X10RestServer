@@ -13,9 +13,8 @@
 
 	<context:component-scan base-package="org.egbers.home.x10" />
 	
-	<bean id="lightService" class="org.egbers.home.x10.service.LightService">
-		
-	</bean>
+	<bean id="lightService" class="org.egbers.home.x10.service.LightService"></bean>
+	<bean id="actionExecutor" class="org.egbers.home.x10.service.ActionExecutor"></bean>
 	
 	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

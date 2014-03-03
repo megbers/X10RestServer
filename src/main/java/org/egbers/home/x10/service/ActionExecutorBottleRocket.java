@@ -1,9 +1,9 @@
 package org.egbers.home.x10.service;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
-public class ActionExecutor {
-	// protected ArrayList<Action> actions;
+public class ActionExecutorBottleRocket implements ActionExecutor {
+	private Runtime runtime;
 	protected static final String program_name = "br";
 	protected static final String port_param = "--port=";
 	protected static final String house_param = "--house=";
@@ -16,43 +16,37 @@ public class ActionExecutor {
 	protected static final String default_command_start = program_name + " "
 			+ port_param + default_port + " " + house_param;
 
-//	public ActionExecutor(ArrayList<Action> actions) {
-//		this.actions = actions;
-//	}
-
-	protected void call(String command) {
-		try {
-			Runtime.getRuntime().exec(command);
-			// System.out.println(command);
-		} catch (Exception e) {
-			System.out.println("Could not execute runtime command");
-			e.printStackTrace();
-		}
+	public ActionExecutorBottleRocket() {
+		runtime = Runtime.getRuntime();
 	}
 
-	public void activate(String house, String socket) {
+	protected void call(String command) throws IOException {
+		runtime.exec(command);
+	}
+
+	public void activate(String house, String socket) throws IOException {
 		String command = default_command_start + house + " " + on_param
 				+ socket;
 		call(command);
 	}
 
-	public void activate(String house) {
+	public void activate(String house) throws IOException {
 		String command = default_command_start + house + " " + on;
 		call(command);
 	}
 
-	public void deactivate(String house, String socket) {
+	public void deactivate(String house, String socket) throws IOException {
 		String command = default_command_start + house + " " + off_param
 				+ socket;
 		call(command);
 	}
 
-	public void deactivate(String house) {
+	public void deactivate(String house) throws IOException {
 		String command = default_command_start + house + " " + off;
 		call(command);
 	}
 
-	public void execute(Action action) {
+	public void execute(Action action) throws IOException {
 		if (action.getApplyToAllSockets()) {
 			if (action.getValue() == 1)
 				activate(action.getHouse());
@@ -66,9 +60,8 @@ public class ActionExecutor {
 		}
 	}
 
-//	public void executeAll() {
-//		for (int i = 0; i < actions.size(); i++) {
-//			execute(actions.get(i));
-//		}
-//	}
+	public void setRuntime(Runtime runtime) {
+		this.runtime = runtime;
+	}
+
 }

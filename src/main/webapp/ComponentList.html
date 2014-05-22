@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $.ajaxSetup ({
+                cache: false
+            });
+
+            var ajax_load = '<p>LOADING...</p>';
+            var loadUrl = '/X10RestServer/rest/manager/AllComponents';
+
+            $.getJSON( loadUrl, null, function(json) {
+                for(var i=0; i<json.length; i++) {
+                    $('#componentList').append('<li>' + json[i].commonName + '</li>');
+                }
+            });
+
+        });
+
+
+    </script>
+</head>
+<body>
+
+<ul id='componentList'>
+
+</ul>
+
+</body>
+</html>

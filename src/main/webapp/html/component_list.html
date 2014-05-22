@@ -1,0 +1,27 @@
+<!--div ng-controller="x10ComponentList" -->
+<div>
+    <a href="#AddNewComponent" class="toggleComponentButton">Add</a>
+    <div>
+        <div ng-repeat="component in components">
+            <div class="component">
+                <span ng-click="selectComponent(component)">
+                    <img ng-src="{{component.iconLocation}}" height="100" width="100" />
+                    <p>{{component.commonName}} ({{component.houseCode}}{{component.unitCode}})</p>
+                </span>
+                <a ng-click="deleteComponent(component)">X</a>
+            </div>
+        </div>
+    </div>
+
+    <modal-dialog show='modalShown' width='50%' height='50%'>
+        <div class="component">
+            <img ng-src="{{selectedComponent.iconLocation}}" height="100" width="100" />
+            <p>{{selectedComponent.commonName}} ({{selectedComponent.houseCode}}{{selectedComponent.unitCode}})</p>
+        </div>
+        <div>
+            <a ng-click="sendCommand(selectedComponent, 'on')" class="toggleComponentButton">On</a>
+            <a ng-click="sendCommand(selectedComponent, 'off')" class="toggleComponentButton">Off</a>
+        </div>
+    </modal-dialog>
+
+</div>

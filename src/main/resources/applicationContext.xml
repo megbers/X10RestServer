@@ -15,48 +15,18 @@
 	
 	<bean id="lightService" class="org.egbers.home.x10.service.LightService"></bean>
 	<bean id="actionExecutor" class="org.egbers.home.x10.service.ActionExecutorBottleRocket"></bean>
+	<bean id="componentManagerService" class="org.egbers.home.x10.service.ComponentManagerService"></bean>
+	<bean id="x10ComponentJSONSerializer" class="org.egbers.home.x10.domain.X10ComponentJSONSerializer"></bean>
 	
-	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/landlord" />
-		<property name="username" value="root" />
-		<property name="password" value="password" />
-		<property name="validationQuery" value="SELECT 1+1" />
-		<property name="testOnBorrow" value="true" />
-	</bean>
+	<import resource="applicationContext-session.xml"/>
 	
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="dataSource">
-			<ref bean="dataSource" /> 
-		</property> 
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect
-				</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-		<property name="annotatedClasses">
-			<list>
-				<value>com.landlordapp.webservice.domain.User</value>
-				<value>com.landlordapp.webservice.domain.Property</value>
-				<value>com.landlordapp.webservice.domain.Person</value>
-				<value>com.landlordapp.webservice.domain.Expense</value>
-				<value>com.landlordapp.webservice.domain.Miles</value>
-				<value>com.landlordapp.webservice.domain.Note</value>
-			</list>
+	<bean id="x10ComponentDAO" class="org.egbers.home.x10.dao.X10ComponentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
 		</property>
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
-	
-	<bean id="PersonDAO" class="com.landlordapp.webservice.data.PersonDAO">
+	<!-- bean id="PersonDAO" class="com.landlordapp.webservice.data.PersonDAO">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
@@ -66,6 +36,6 @@
 		<property name="personDAO">
 			<ref bean="PersonDAO" />
 		</property> 
-	</bean-->
+	</bean -->
 	
 </beans>	

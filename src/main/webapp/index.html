@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="x10Client">
+<head lang="en">
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/x10client.js"></script>
+    <link rel="stylesheet" href="css/modal.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/button.css"/>
+</head>
+<body>
+
+<ng-view>
+
+</ng-view>
+
+<!-- div ng-controller="x10ComponentList">
+    <div>
+        <div ng-repeat="component in components">
+            <div ng-click="selectComponent(component)" class="component">
+                <img ng-src="{{getImage(component)}}" height="100" width="100" />
+                <p>{{component.commonName}}</p>
+            </div>
+        </div>
+    </div>
+
+    <modal-dialog show='modalShown' width='50%' height='50%'>
+        <div class="component">
+            <img ng-src="{{getImage(selectedComponent)}}" height="100" width="100" />
+            <p>{{selectedComponent.commonName}}</p>
+        </div>
+        <div>
+            <a ng-click="sendCommand(selectedComponent, 'on')" class="toggleComponentButton">On</a>
+            <a ng-click="sendCommand(selectedComponent, 'off')" class="toggleComponentButton">Off</a>
+        </div>
+    </modal-dialog>
+</div -->
+
+
+</body>
+</html>

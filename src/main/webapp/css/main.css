@@ -1,0 +1,10 @@
+.component{
+    width:200px;
+    text-align:center;
+    display:block;
+    background-color: #ededed;
+    border: 1px solid black;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float:left;
+}

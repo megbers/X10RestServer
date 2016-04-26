@@ -8,13 +8,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
-import org.codehaus.jettison.json.JSONArray;
-import org.codehaus.jettison.json.JSONObject;
 import org.egbers.home.x10.domain.X10Component;
-import org.egbers.home.x10.domain.X10ComponentJSONSerializer;
+import org.egbers.home.x10.domain.X10Response;
 import org.egbers.home.x10.service.ComponentManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,14 +21,11 @@ public class ComponentManagerResource {
 	
 	@Autowired
 	private ComponentManagerService componentManagerService;
-	@Autowired
-	private X10ComponentJSONSerializer x10ComponentJSONSerializer;
-	//private List<X10Component> componentList;
-	
+
 	@GET
 	@Path("AddComponent/{houseCode}/{unitCode}/{commonName}/{type}")
 	@Produces(APPLICATION_JSON)
-	public Response addComponent(@PathParam("houseCode") String houseCode, @PathParam("unitCode") Integer unitCode, 
+	public X10Component addComponent(@PathParam("houseCode") String houseCode, @PathParam("unitCode") Integer unitCode,
 			@PathParam("commonName") String commonName, @PathParam("type") Integer type) throws Exception {
 		X10Component component = new X10Component();
 		component.setCommonName(commonName);
@@ -42,12 +34,9 @@ public class ComponentManagerResource {
 		component.setType(type);
 		component.setIconLocation(getIconImageLocation(type));
 		
-		component = componentManagerService.save(component);
-		JSONObject returnObject = x10ComponentJSONSerializer.serialize(component);
-		return Response.status(Status.OK).entity(returnObject).build();
-		
+		return componentManagerService.save(component);
 	}
-	
+
 	private String getIconImageLocation(Integer type) {
 		switch(type) {
         case 0:
@@ -66,21 +55,14 @@ public class ComponentManagerResource {
 	@GET
 	@Path("AllComponents")
 	@Produces(APPLICATION_JSON)
-	public Response getAll() throws Exception {
-		List<X10Component> componentList = componentManagerService.listAll();
-		JSONArray returnObject = new JSONArray();
-		for(X10Component component : componentList) {
-			returnObject.put(x10ComponentJSONSerializer.serialize(component));
-		}
-		return Response.status(Status.OK).entity(returnObject).build();
+	public List<X10Component> getAll() throws Exception {
+		return componentManagerService.listAll();
 	}
-	
+
 	@GET
 	@Path("DeleteComponent/{id}")
 	@Produces(APPLICATION_JSON)
-	public Response deleteById(@PathParam("id") Long id) throws Exception {
-		JSONObject returnObject = new JSONObject();
-		returnObject.put("success", componentManagerService.delete(id));
-		return Response.status(Status.OK).entity(returnObject).build();
+	public X10Response deleteById(@PathParam("id") Long id) throws Exception {
+        return new X10Response(componentManagerService.delete(id));
 	}
 }

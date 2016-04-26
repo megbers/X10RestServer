@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ComponentDAOTest {
@@ -27,7 +27,7 @@ public class ComponentDAOTest {
 	@InjectMocks
 	private X10ComponentDAO dao;
 	private X10Component component;
-	private List<X10Component> componentList;
+	private List componentList;
 	
 	@Before
 	public void setUp() {

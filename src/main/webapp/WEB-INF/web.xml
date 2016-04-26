@@ -16,14 +16,18 @@
   	
   	<servlet>
 		<servlet-name>Jersey REST Service</servlet-name>
-		<servlet-class>
-			com.sun.jersey.spi.spring.container.servlet.SpringServlet
-		</servlet-class>
-		<init-param>
-			<param-name>com.sun.jersey.config.property.packages</param-name>
-			<param-value>com.landlordapp.webservice.rest</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
+        <servlet-class>
+            org.glassfish.jersey.servlet.ServletContainer
+        </servlet-class>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>org.egbers.home.x10.resources.X10RestServerApplication</param-value>
+        </init-param>
+        <!--<init-param>-->
+            <!--<param-name>com.sun.jersey.config.property.packages</param-name>-->
+            <!--<param-value>org.egbers.home.x10.resources</param-value>-->
+        <!--</init-param>-->
+        <load-on-startup>1</load-on-startup>
 	</servlet>
   	
   	<servlet-mapping>

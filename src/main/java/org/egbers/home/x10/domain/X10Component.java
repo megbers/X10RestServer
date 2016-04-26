@@ -81,5 +81,16 @@ public class X10Component {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
+
+    @Override
+    public String toString() {
+        return "X10Component{" +
+                "id=" + id +
+                ", houseCode='" + houseCode + '\'' +
+                ", unitCode=" + unitCode +
+                ", commonName='" + commonName + '\'' +
+                ", iconLocation='" + iconLocation + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }

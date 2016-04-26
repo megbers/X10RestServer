@@ -2,16 +2,13 @@ package org.egbers.home.x10.service;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class LightService {
 
 	private static final int ON = 1;
 	private static final int OFF = 0;
 	
-	@Autowired
 	private ActionExecutor actionExecutor;
-	
+
 	public boolean turnOn(String houseCode, String unitCode) throws IOException {
 		Action action = new Action(houseCode, unitCode, ON);
 		actionExecutor.execute(action);
@@ -25,7 +22,8 @@ public class LightService {
 	}
 
 	public void setActionExecutor(ActionExecutor actionExecutor) {
+        System.out.println("Injecting actionExecutor: " + (actionExecutor instanceof ActionExecutorFirecracker32));
 		this.actionExecutor = actionExecutor;
 	}
-	
+
 }

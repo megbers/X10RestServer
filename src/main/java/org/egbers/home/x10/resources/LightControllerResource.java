@@ -7,8 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
+import org.egbers.home.x10.domain.X10Response;
 import org.egbers.home.x10.service.LightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,14 +23,13 @@ public class LightControllerResource {
 	@GET
 	@Path("on/{house}/{unit}")
 	@Produces(APPLICATION_JSON)
-	public JSONObject turnOn(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) throws JSONException {
-		JSONObject response = new JSONObject();
+	public X10Response turnOn(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) {
+        X10Response response = new X10Response();
 		try{
-			boolean success = lightService.turnOn(houseCode, unitCode);
-			response.put("success", success);
+            response.setSuccess(lightService.turnOn(houseCode, unitCode));
 		}catch(Exception e) {
-			response.put("success", false);
-			response.put("errorMessage", e.getMessage());
+			response.setSuccess(false);
+			response.setErrorMessage(e.getMessage());
 		}
 		return response;
 	}
@@ -39,20 +37,15 @@ public class LightControllerResource {
 	@GET
 	@Path("off/{house}/{unit}")
 	@Produces(APPLICATION_JSON)
-	public JSONObject turnOff(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) throws JSONException {
-		JSONObject response = new JSONObject();
-		try{
-			boolean success = lightService.turnOff(houseCode, unitCode);
-			response.put("success", success);
-		}catch(Exception e) {
-			response.put("success", false);
-			response.put("errorMessage", e.getMessage());
-		}
-		return response;
+	public X10Response turnOff(@PathParam("house") String houseCode, @PathParam("unit") String unitCode) {
+        X10Response response = new X10Response();
+        try{
+            response.setSuccess(lightService.turnOff(houseCode, unitCode));
+        }catch(Exception e) {
+            response.setSuccess(false);
+            response.setErrorMessage(e.getMessage());
+        }
+        return response;
 	}
 
-//	public void setLightService(LightService lightService) {
-//		this.lightService = lightService;
-//	}
-	
 }

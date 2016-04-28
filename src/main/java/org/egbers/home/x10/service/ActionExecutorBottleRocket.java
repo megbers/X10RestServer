@@ -1,5 +1,7 @@
 package org.egbers.home.x10.service;
 
+import org.egbers.home.x10.domain.Action;
+
 import java.io.IOException;
 
 public class ActionExecutorBottleRocket extends AbstractActionExecutor implements ActionExecutor {

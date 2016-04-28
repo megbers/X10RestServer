@@ -4,6 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import org.egbers.home.x10.domain.Action;
 import org.junit.Before;
 import org.junit.Test;
 

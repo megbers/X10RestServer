@@ -1,5 +1,6 @@
 package org.egbers.home.x10.service;
 
+import org.egbers.home.x10.domain.Action;
 import org.junit.Before;
 import org.junit.Test;
 

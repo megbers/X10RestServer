@@ -5,6 +5,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
+import org.egbers.home.x10.domain.Action;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

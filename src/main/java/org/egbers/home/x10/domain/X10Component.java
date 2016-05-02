@@ -1,15 +1,10 @@
 package org.egbers.home.x10.domain;
 
-import static org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion.ALWAYS;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import javax.persistence.*;
+
+import static org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion.ALWAYS;
 
 @Entity
 @Table(name = "component", catalog = "home_automation")

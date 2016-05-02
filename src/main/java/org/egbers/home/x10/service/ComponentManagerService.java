@@ -1,10 +1,10 @@
 package org.egbers.home.x10.service;
 
-import java.util.List;
-
 import org.egbers.home.x10.dao.X10ComponentDAO;
 import org.egbers.home.x10.domain.X10Component;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class ComponentManagerService {
 	@Autowired

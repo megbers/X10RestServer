@@ -1,9 +1,5 @@
 package org.egbers.home.x10.resources;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
-
 import org.egbers.home.x10.domain.X10Response;
 import org.egbers.home.x10.service.LightService;
 import org.junit.Test;
@@ -11,6 +7,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LightControllerResourceTest {
@@ -20,7 +20,7 @@ public class LightControllerResourceTest {
 	@InjectMocks
 	private LightControllerResource resource = new LightControllerResource();
 	private String houseCode = "H";
-	private String unitCode = "U";
+	private Integer unitCode = 1;
 	
 	@Test
 	public void turnOffShouldReturnSuccessWhenSuccessful() throws Exception {

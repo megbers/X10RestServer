@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:component-scan base-package="org.egbers.home.x10" />
 
-    <bean id="nixActionExecutor" class="org.egbers.home.x10.service.ActionExecutorBottleRocket"></bean>
-    <!--<bean id="winActionExecutor" class="org.egbers.home.x10.service.ActionExecutorCM17A"></bean>-->
-    <!--<bean id="winActionExecutor" class="org.egbers.home.x10.service.ActionExecutorFirecracker32"></bean>-->
-    <bean id="winActionExecutor" class="org.egbers.home.x10.service.ActionExecutorSerial"></bean>
+    <bean id="actionExecutor" class="org.egbers.x10.jfirecracker.X10Executor">
+		<constructor-arg value="COM1"/>
+	</bean>
 
-
-    <bean id="lightService" class="org.egbers.home.x10.service.LightService">
-        <property name="actionExecutor" value="#{systemProperties['os.name'].toLowerCase().indexOf('win') >= 0 ? winActionExecutor : nixActionExecutor}"/>
-    </bean>
+    <bean id="lightService" class="org.egbers.home.x10.service.LightService"></bean>
 	<bean id="componentManagerService" class="org.egbers.home.x10.service.ComponentManagerService"></bean>
 
 	<import resource="applicationContext-session.xml"/>

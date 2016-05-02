@@ -141,6 +141,12 @@
             <version>1.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.egbers.x10</groupId>
+            <artifactId>JFirecracker</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 	</dependencies>
 
 	<build>

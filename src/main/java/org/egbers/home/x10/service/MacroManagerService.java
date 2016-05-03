@@ -3,7 +3,6 @@ package org.egbers.home.x10.service;
 import org.egbers.home.x10.dao.X10MacroDAO;
 import org.egbers.home.x10.domain.X10Macro;
 import org.egbers.home.x10.macro.X10MacroExecutor;
-import org.egbers.x10.jfirecracker.X10Executor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

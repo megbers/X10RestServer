@@ -2,7 +2,6 @@ package org.egbers.home.x10.service;
 
 import org.egbers.home.x10.dao.X10ComponentDAO;
 import org.egbers.home.x10.domain.X10Component;
-import org.egbers.home.x10.domain.X10Macro;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

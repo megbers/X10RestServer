@@ -59,4 +59,18 @@ public class ComponentDAOTest {
 		when(template.find("from org.egbers.home.x10.domain.X10Component as model order by model.commonName asc")).thenThrow(new SQLException());
 		dao.getAll();
 	}
+
+    @Test
+    public void deleteShouldDeleteMacro() throws Exception {
+        doNothing().when(template).delete(component);
+        dao.delete(component);
+
+        verify(template).delete(component);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void deleteShouldThrowExceptionWhenTemplateDoes() throws Exception {
+        doThrow(new SQLException()).when(template).delete(component);
+        dao.delete(component);
+    }
 }

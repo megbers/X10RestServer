@@ -2,11 +2,12 @@ package org.egbers.home.x10.macro;
 
 import org.junit.Test;
 
-import static org.egbers.x10.jfirecracker.Action.*;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
 import java.util.List;
+
+import static org.egbers.x10.jfirecracker.Action.OFF;
+import static org.egbers.x10.jfirecracker.Action.ON;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 public class X10MacroParserTest {
     @Test

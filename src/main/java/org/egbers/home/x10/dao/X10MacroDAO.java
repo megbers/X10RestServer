@@ -1,6 +1,5 @@
 package org.egbers.home.x10.dao;
 
-import org.egbers.home.x10.domain.X10Component;
 import org.egbers.home.x10.domain.X10Macro;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;

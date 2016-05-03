@@ -1,6 +1,7 @@
 <!--div ng-controller="x10ComponentList" -->
 <div>
-    <a href="#AddNewComponent" class="toggleComponentButton">Add</a>
+    <a href="#AddNewComponent" class="toggleComponentButton">Add Component</a>
+    <a href="#AddNewMacro" class="toggleComponentButton">Add Macro</a>
     <div>
         <div ng-repeat="component in components">
             <div class="component">
@@ -11,6 +12,16 @@
                 <a ng-click="deleteComponent(component)">X</a>
             </div>
         </div>
+
+        <div ng-repeat="macro in macros">
+            <div class="component">
+                <span ng-click="selectComponent(macro)">
+                    <img ng-src="{{macro.iconLocation}}" height="100" width="100" />
+                    <p>{{macro.commonName}}</p>
+                </span>
+                <a ng-click="deleteComponent(macro)">X</a>
+            </div>
+        </div>
     </div>
 
     <modal-dialog show='modalShown' width='50%' height='50%'>
@@ -18,9 +29,12 @@
             <img ng-src="{{selectedComponent.iconLocation}}" height="100" width="100" />
             <p>{{selectedComponent.commonName}} ({{selectedComponent.houseCode}}{{selectedComponent.unitCode}})</p>
         </div>
-        <div>
+        <div ng-show='isComponent'>
             <a ng-click="sendCommand(selectedComponent, 'on')" class="toggleComponentButton">On</a>
             <a ng-click="sendCommand(selectedComponent, 'off')" class="toggleComponentButton">Off</a>
+        </div>
+        <div ng-hide='isComponent'>
+            <a ng-click="executeMacro(selectedComponent)" class="toggleComponentButton">Run</a>
         </div>
     </modal-dialog>
 

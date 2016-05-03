@@ -15,7 +15,9 @@
 	</bean>
 
     <bean id="lightService" class="org.egbers.home.x10.service.LightService"></bean>
+    <bean id="macroExecutor" class="org.egbers.home.x10.macro.X10MacroExecutor"></bean>
 	<bean id="componentManagerService" class="org.egbers.home.x10.service.ComponentManagerService"></bean>
+    <bean id="macroManagerService" class="org.egbers.home.x10.service.MacroManagerService"></bean>
 
 	<import resource="applicationContext-session.xml"/>
 	
@@ -24,5 +26,11 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+
+    <bean id="x10MacroDAO" class="org.egbers.home.x10.dao.X10MacroDAO">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
 	
 </beans>	

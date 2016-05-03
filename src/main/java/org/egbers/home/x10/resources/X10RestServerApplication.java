@@ -7,6 +7,7 @@ public class X10RestServerApplication extends ResourceConfig {
     public X10RestServerApplication() {
         register(LightControllerResource.class);
         register(ComponentManagerResource.class);
+        register(MacroResource.class);
         register(GensonJsonConverter.class);
     }
 }

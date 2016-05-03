@@ -39,6 +39,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>org.egbers.home.x10.domain.X10Component</value>
+                <value>org.egbers.home.x10.domain.X10Macro</value>
 			</list>
 		</property>
 	</bean>

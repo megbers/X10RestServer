@@ -7,6 +7,10 @@ x10Client.controller("x10ComponentList",  ['$scope', '$http', '$location', 'Comp
         $scope.components = data;
     });
 
+    $http.get('/X10RestServer/rest/macro/all').success(function(data) {
+        $scope.macros = data;
+    });
+
     $scope.selectComponent = function(component) {
         $scope.toggleModal(component);
     };
@@ -26,12 +30,23 @@ x10Client.controller("x10ComponentList",  ['$scope', '$http', '$location', 'Comp
         });
     };
 
+    $scope.executeMacro = function(component) {
+        var commandUrl = '/X10RestServer/rest/macro/run/' + component.id;
+        $http.get(commandUrl).success(function(data) {
+            if(data.errorMessage) {
+                alert('Error\n' + data.errorMessage);
+            }
+            $scope.toggleModal({});
+        });
+    };
+
     //For the modal window
     $scope.modalShown = false;
     $scope.selectedComponent = {};
     $scope.toggleModal = function(component) {
         $scope.modalShown = !$scope.modalShown;
         $scope.selectedComponent = component;
+        $scope.isComponent = !component.macroString;
     };
 }]);
 
@@ -56,11 +71,25 @@ x10Client.controller("x10ComponentDelete", ['$scope', '$http', '$location', 'Com
 
     //TODO Make this an HTTP DELETE
     $scope.deleteComponent = function() {
-        var loadUrl = '/X10RestServer/rest/manager/DeleteComponent/' + $scope.component.id;
+        var loadUrl = $scope.component.macroString ? '/X10RestServer/rest/macro/delete/' + $scope.component.id : '/X10RestServer/rest/manager/DeleteComponent/' + $scope.component.id;
+
         $http.get(loadUrl).success(function(data) {
             $location.path('/ShowAllComponents');
         });
     }
+}]);
+
+x10Client.controller("x10MacroAdd",  ['$scope', '$http', '$location', function($scope, $http, $location) {
+    $scope.macro = {};
+
+    //TODO Make this an HTTP POST
+    $scope.addMacro = function() {
+        var loadUrl = '/X10RestServer/rest/macro/add/';
+        $http.post(loadUrl, $scope.macro).then(function(data) {
+            $location.path('/ShowAllComponents');
+        });
+
+    };
 }]);
 
 x10Client.config(['$routeProvider',
@@ -77,6 +106,10 @@ x10Client.config(['$routeProvider',
             when('/DeleteComponent', {
                 templateUrl: 'html/component_delete.html',
                 controller: 'x10ComponentDelete'
+            }).
+            when('/AddNewMacro', {
+                templateUrl: 'html/macro_add.html',
+                controller: 'x10MacroAdd'
             }).
             otherwise({
                 redirectTo: '/ShowAllComponents'

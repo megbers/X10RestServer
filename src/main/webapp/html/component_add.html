@@ -1,4 +1,5 @@
 <div>
+    House Code
     <select ng-model="component.houseCode">
         <option value="A">A</option>
         <option value="B">B</option>
@@ -16,7 +17,8 @@
         <option value="N">N</option>
         <option value="O">O</option>
         <option value="P">P</option>
-    </select>
+    </select><br/>
+    Unit Code
     <select ng-model="component.unitCode">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -34,15 +36,16 @@
         <option value="14">14</option>
         <option value="15">15</option>
         <option value="16">16</option>
-    </select>
-
-    <input type="text" ng-model="component.commonName" />
+    </select><br/>
+    Name
+    <input type="text" ng-model="component.commonName" /><br/>
+    Icon
     <select ng-model="component.type">
         <option value="0">LIGHT_MODULE</option>
         <option value="1">LIGHT_SWITCH</option>
         <option value="2">APPLIANCE_MODULE</option>
         <option value="3">OUTLET_MODULE</option>
-    </select>
+    </select><br/>
 
     <a ng-click="addComponent()" class="toggleComponentButton">Add</a>
 </div>
